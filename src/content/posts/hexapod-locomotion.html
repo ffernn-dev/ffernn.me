@@ -1,0 +1,55 @@
+<p>Hexapod robot with Inverse Kinematics-based locomotion, self-levelling, and remote control over TCP/IP.</p>
+<p><video controls><source src="/videos/hexapod.mp4" type="video/mp4; codecs=av01.0.09M.10.0.110.09.18.09.0"></video></p>
+<blockquote>
+<p>The finished, working hexapod</p>
+</blockquote>
+<h2>Project writeup</h2>
+<p>I&#39;m taking Software Engineering in high school, and for our third Software Engineering assessment task this year we were tasked to build a <strong>hexapod robot</strong> from a kit which we would program to meet requirements that we set as a group. We set the following:</p>
+<ul>
+<li>Movement control and camera feed over Wi-Fi (or possibly the internet)</li>
+<li>Self-levelling</li>
+<li>Carrying objects</li>
+<li>Climbing sloped surfaces</li>
+<li>Activating an LED headlight in the dark</li>
+</ul>
+<p>The kit included some demo python code which allowed for remote control of the robot over HTTP, but it had some limitations that we would have to improve upon for our project. The gait was slow, the UI only allowed for one action at a time, and the live video feed had high latency and low framerate.
+After browsing through the provided code I came to the conclusion that it would be necessary use the provided Servo and IMU modules but write my own control system and <strong>Inverse Kinematics</strong> walking algorithm.
+This turned out to be a VERY large undertaking, and I worked many a late night over the course of the 6 weeks allotted for development. My first idea was to create a model of the robot in Blender, and to use Blender&#39;s python scripting to send commands to the servos. Whilst the IK worked really well, the Blender package was too heavy to run on the Raspberry Pi that the robot was based off, sending this idea into the bin.
+<video controls><source src="/videos/alfred-blender.mp4" type="video/mp4; codecs=av01.0.09M.10.0.110.09.18.09.0"></video></p>
+<blockquote>
+<p>Hexapod model in Blender with IK</p>
+</blockquote>
+<p>I attempted to implement <strong>CCDIK</strong> in python next. CCD is a popular generalised method for calculating IK, but I was finding it difficult to implement, primarily because I needed to first write the <strong>Forward Kinematics</strong> algorithm to build on top of. This involved choosing data structures to represent <strong>an armature as chains of bones</strong>, converting between <strong>local and global coordinate and rotation systems</strong>, and doing this for 6 legs at different positions. As you can imagine this quickly became very complicated, and combining this with the complex iteration of the CCD algorithm lead me to dead end after dead end, with no easy way to track down where the source of error was.
+After a lot more research, I finally came across an article describing how to derive the simple <strong>trigonometric equations</strong> that define the relationship between end effector and servo angles on hexapod legs specifically, meaning I could use the exact solutions rather than the close approximation given by CCD, which would also be significantly easier to implement. I also requested a review of my armature/forward kinematics code from a friend, who was able to spot some of the last remaining bugs so that I could know any future errors came from the IK calculations. 
+<video controls><source src="/videos/hexapodfails.mp4" type="video/mp4; codecs=av01.0.09M.10.0.110.09.18.09.0"></video></p>
+<blockquote>
+<p>Progress of my IK implementation, using my Godot 3d visualisation to debug.</p>
+</blockquote>
+<p>After these breakthroughs it was an intense sprint before the deadline with a lot still to go.</p>
+<ul>
+<li><p>I built <strong>walking gaits</strong> by moving each foot along a quadratic path with a flat bottom, staggering each leg based on one of three selectable patterns which each have tradeoffs between speed, efficiency and balance.</p>
+</li>
+<li><p>The control input is given by a video game controller, as they are readily available and work well for controlling the <strong>three movement modes</strong>:</p>
+<ul>
+<li>Walk with turning radius or turn on the spot</li>
+<li>Strafe</li>
+<li>Look around (head only)</li>
+</ul>
+</li>
+<li><p><strong>Self-levelling</strong> was achieved by tuning a <strong>PID</strong> control algorithm to read rotation angles given by an IMU, and rotate the <strong>root bone</strong> of the armature in the opposite direction. This essentially tells each leg which way is the new up, and the Inverse Kinematics algorithm does the rest of the work.
+<img src="/images/alfred-client-ui.png" alt="alfred-client-ui.png" title="null" /></p>
+<blockquote>
+<p>The client GUI</p>
+</blockquote>
+</li>
+<li><p>The client is developed in the <strong>Godot engine</strong>, chosen for built-in game controller support, rapid UI development, and my familiarity. </p>
+<ul>
+<li>It communicates with the hexapod over <strong>websockets</strong> for low latency control.</li>
+<li>It displays the live Inverse Kinematics state in the bottom left, which I developed very early on to utilise Godot&#39;s 3d capabilities to <strong>visualise</strong> the IK state for debugging. </li>
+<li>It allows for live adjustments of the robot&#39;s <strong>stance and gait</strong>. </li>
+<li>Finally, it displays a live feed from the camera at a <strong>high framerate</strong> and low latency over <strong>webrtc</strong>, which allows for smooth and responsive operation of the hexapod.</li>
+</ul>
+</li>
+<li><p>Finally, one of my teammates built an LED headlamp for the robot, which I programmed to turn on and off based on a ambient light threshold using an ESP32 microcontroller strapped to the side (at the time of writing there are some firmware issues reading Light Dependent Resistors on a Raspberry Pi, so I opted for a separate MCU)</p>
+</li>
+</ul>

@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "d4ffc513dded8586",
+    "type": "split",
+    "children": [
+      {
+        "id": "5bf64d41cfe982e1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b5ccad9e90010f8d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DIY intervalometer.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "DIY intervalometer"
+            }
+          },
+          {
+            "id": "4f0fd5c610a1aa5f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FBM Ocean Rendering.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "FBM Ocean Rendering"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b094b9b939ba2263",
+    "type": "split",
+    "children": [
+      {
+        "id": "955dfb8ecd876f56",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9fe78b987e279f67",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "883a8ba37e6bd579",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "6f64bb0379972265",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 260.5
+  },
+  "right": {
+    "id": "a1359d3370450042",
+    "type": "split",
+    "children": [
+      {
+        "id": "b95f74dba696cf2f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "42db2dc73e604f33",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Personal/Ideas.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Ideas"
+            }
+          },
+          {
+            "id": "6127870559fc0764",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Personal/Ideas.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Ideas"
+            }
+          },
+          {
+            "id": "e63e9cac9598fc90",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f12ba7ea898c561a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Personal/Ideas.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Ideas"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
+    }
+  },
+  "active": "4f0fd5c610a1aa5f",
+  "lastOpenFiles": [
+    "Hexapod Locomotion.md",
+    "DIY intervalometer.md",
+    "_assets/hexapod.mp4",
+    "_assets/hexapod.mp4",
+    "_assets/intervalometer-hero.png",
+    "FBM Ocean Rendering.md",
+    "Island Song (Cover).md",
+    "Procrastination Simulator.md",
+    "Weekary.md",
+    "SaveCodr.md",
+    "Ambient smart bed light.md",
+    "_assets/hexapodfails.mp4",
+    "Unstable (adj.).md",
+    "Unnamed Colour Palette Generator.md",
+    "_assets/alfred-blender.mp4",
+    "_assets/alfred-client-ui.png",
+    "_assets/alfred-hero.png",
+    "_assets/output.mp4",
+    "_assets/bed-light.png",
+    "_assets/IMG_6057.HEIC",
+    "_assets/water-game.png",
+    "Chargd.md",
+    "_assets/weekary.png",
+    "_assets/Pasted image 20241211181116.png",
+    "_assets/chargd-ui.png",
+    "_assets/chargd-firsttest.png",
+    "_assets/chargd-sketch.png",
+    "_assets/Pasted_image.md",
+    "ffernn.me.md",
+    "I Dunno, It's a Platformer I Guess.md",
+    "Bongo Cat 3D.md",
+    "Untitled",
+    "_templates/Project.md",
+    "_templates",
+    "I Dunno, It's a Platformer I Guess (IDIAPIG).md",
+    "Personal/Project Log/Bongo Cat 3D.md",
+    "Personal/Project Log/Chargd.md",
+    "Personal/Project Log/Weekary.md",
+    "Personal/Project Log/Unstable (adj.).md",
+    "Personal/Project Log/Unnamed Colour Palette Generator.md",
+    "Personal/Project Log/SaveCodr.md",
+    "Personal/Project Log/Procrastination Simulator.md",
+    "Personal/Project Log/I Dunno, It's a Platformer I Guess (IDIAPIG).md",
+    "Personal/ISS tracker/_assets",
+    "Personal/ISS tracker"
+  ]
+}
