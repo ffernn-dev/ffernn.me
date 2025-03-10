@@ -33,9 +33,8 @@ const app = new Elysia()
   .use(html())
   .get("/", () => render(Home()))
   .get(
-    "/.well-known/acme-challenge/***REMOVED***/",
-    () =>
-      "***REMOVED******REMOVED***",
+    `/.well-known/acme-challenge/${process.env.CERTBOT_URL}}`,
+    () => process.env.CERTBOT_STRING,
   )
   .get("/about", () => render(About()))
   .get("/projects", () => render(Projects()))
