@@ -27,6 +27,7 @@ const settings =
           tls: {
             cert: le_cert,
             key: le_key,
+            serverName: "ffernn.me",
           },
         },
       }
