@@ -3,7 +3,6 @@ import type Database from "bun:sqlite";
 type Tags = number[][];
 
 export default function getProjects(tags: Tags, query: string, db: Database) {
-  console.log(query);
   const stmt = `SELECT
      posts.*,
      GROUP_CONCAT(tags.tag_id, ',') AS tags,

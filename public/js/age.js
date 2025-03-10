@@ -1,5 +1,4 @@
 function setAge(el) {
-  console.log("TEST");
   el.innerHTML = (
     (Date.now() - 1180879200000) /
     1000 /
