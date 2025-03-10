@@ -23,9 +23,11 @@ const le_key = Bun.file("/etc/letsencrypt/live/ffernn.me/privkey.pem");
 const settings =
   (await le_cert.exists()) && (await le_key.exists())
     ? {
-        tls: {
-          cert: le_cert,
-          key: le_key,
+        serve: {
+          tls: {
+            cert: le_cert,
+            key: le_key,
+          },
         },
       }
     : {};
