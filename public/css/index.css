@@ -362,6 +362,42 @@ input:focus {
   margin-block: 1.5rem;
 }
 
+.help {
+  display: inline-block;
+  position: relative;
+  cursor: help;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  border: 1px solid #f7fff7;
+  margin-left: 8px;
+}
+
+.help:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: 125%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.help:hover::after {
+  opacity: 1;
+}
+
 /* On screens that are less than 1008px wide, make the sidebar into a topbar */
 @media screen and (max-width: 1008px) {
   #main {

@@ -15,9 +15,9 @@ export default function Home() {
       <p>
         I'm a <span class="red-text">software developer</span> |{" "}
         <span class="yellow-text">tinkerer</span> |{" "}
-        <span class="green-text">musician(?)</span> |{" "}
+        <span class="green-text">musician</span> |{" "}
         <span class="blue-text">student</span> |{" "}
-        <span class="pink-text">all round cool guy</span>, and this is my little
+        <span class="pink-text">ameteur astronomer</span>, and this is my little
         home on the web.
       </p>
       <p>
@@ -56,6 +56,15 @@ export default function Home() {
               next
             </a>{" "}
             ⥽
+          </span>
+          <span
+            class="help"
+            data-tooltip="A webring is a community of websites that link to each other, a staple of early web culture."
+            role="tooltip"
+            tabindex={0}
+            aria-label="Help: A webring is a community of websites that link to each other, a staple of early web culture."
+          >
+            ?
           </span>
         </div>
         <p id="footertext">© Copyright 2025 Fern</p>
