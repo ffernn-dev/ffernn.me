@@ -1,7 +1,7 @@
 import { Elysia, t } from "elysia";
 import { Database } from "bun:sqlite";
 import { staticPlugin } from "@elysiajs/static";
-import { html, Html } from "@elysiajs/html";
+import { html } from "@elysiajs/html";
 import { renderToString } from "preact-render-to-string";
 import type { JSXInternal } from "node_modules/preact/src/jsx";
 import Home from "./pages/Home";
@@ -15,13 +15,22 @@ import Blog from "./pages/Blog";
 function render(element: JSXInternal.Element): string {
   return "<!DOCTYPE html>\n" + renderToString(element);
 }
-function parseURLArray(input: string) {
-  return JSON.parse("[" + input.replace(/\(/g, "[").replace(/\)/g, "]") + "]");
-}
 
 const db = new Database("db/content.sqlite", { create: true });
 
-const app = new Elysia()
+const le_cert = Bun.file("/etc/letsencrypt/live/ffernn.me/fullchain.pem");
+const le_key = Bun.file("/etc/letsencrypt/live/ffernn.me/privkey.pem");
+const settings =
+  (await le_cert.exists()) && (await le_key.exists())
+    ? {
+        tls: {
+          cert: le_cert,
+          key: le_key,
+        },
+      }
+    : {};
+
+const app = new Elysia(settings)
   .use(
     staticPlugin({
       prefix: "/",
