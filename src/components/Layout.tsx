@@ -23,9 +23,11 @@ export default function Layout(
 ) {
   const title = props.title ? props.title : false;
   const description = props.description ? props.description : "";
-  const url = props.url ? props.url : "";
-  const embedImage = props.embedImage ? props.embedImage : false;
-
+  const url = props.url ? "http://ffernn.me" + props.url : "http://ffernn.me";
+  const embedImage = props.embedImage
+    ? "http://ffernn.me" + props.embedImage
+    : false;
+  console.log(embedImage);
   const pageTitle = title ? `${title} || ffernn` : "Fern!";
   return (
     <html lang="en">
@@ -40,10 +42,12 @@ export default function Layout(
         <link rel="stylesheet" type="text/css" href="/css/index.css" />
         {stylesheets}
         <title>{pageTitle}</title>
-        <meta content={pageTitle} property="og:title" />
-        <meta content={description} property="og:description" />
-        {embedImage && <meta content={embedImage} property="og:image" />}
-        <meta content={url} property="og:url" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        {embedImage && <meta property="og:image" content={embedImage} />}
+        <meta property="og:url" content={url} />
+        <meta property="og:locale" content="en_AU" />
+        <meta property="og:type" content="website" />
         <meta content="#38B863" name="theme-color" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:site" content="@ffernn" />
@@ -71,6 +75,7 @@ export default function Layout(
           content="black-translucent"
         />
         <link rel="apple-touch-icon" href="/icons/icon128_maskable.png" />{" "}
+        <link rel="alternate" hreflang="en" href="http://ffernn.me/" />
       </head>
       <body style="background-color: #1c1a1e">
         <div id="main">

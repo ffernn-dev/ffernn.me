@@ -21,7 +21,7 @@ export default function Project(id: string, db: Database) {
 
   const props: PageProps = {
     title: project.title,
-    url: "/projects",
+    url: "/project/" + project.name,
     description: project.title,
     embedImage: "/images/" + project.banner_image + ".png" || "",
   };
