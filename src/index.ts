@@ -59,7 +59,7 @@ const app = new Elysia()
       .all();
     return rows;
   })
-  .listen(process.env.BUN_ENV === "production" ? 80 : 300);
+  .listen(process.env.HTTP_PORT || 3000);
 
 console.log(
   `Elysia is running at ${app.server?.hostname}:${app.server?.port} on Bun ${Bun.version}. Startup took ${Bun.nanoseconds() / 1000000000} seconds`,
