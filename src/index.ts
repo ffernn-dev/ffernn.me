@@ -23,17 +23,13 @@ const le_key = Bun.file("/etc/letsencrypt/live/ffernn.me/privkey.pem");
 const settings =
   (await le_cert.exists()) && (await le_key.exists())
     ? {
-        serve: {
-          tls: {
-            cert: le_cert,
-            key: le_key,
-            serverName: "ffernn.me",
-          },
-        },
+        cert: le_cert,
+        key: le_key,
+        serverName: "ffernn.me",
       }
     : {};
 
-const app = new Elysia(settings)
+const app = new Elysia()
   .use(
     staticPlugin({
       prefix: "/",
@@ -75,7 +71,7 @@ const app = new Elysia(settings)
       .all();
     return rows;
   })
-  .listen(process.env.HTTP_PORT || 3000);
+  .listen({ port: process.env.HTTP_PORT || 3000, tls: settings });
 
 console.log(
   `Elysia is running at ${app.server?.hostname}:${app.server?.port} on Bun ${Bun.version}. Startup took ${Bun.nanoseconds() / 1000000000} seconds`,
