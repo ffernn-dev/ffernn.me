@@ -23,7 +23,7 @@ export default function Project(id: string, db: Database) {
     title: project.title,
     url: "/projects",
     description: project.title,
-    embedImage: project.banner_image || "",
+    embedImage: "/images/" + project.banner_image + ".png" || "",
   };
   const hasBanner =
     typeof project.banner_image !== "undefined" &&
