@@ -32,6 +32,11 @@ const app = new Elysia()
   )
   .use(html())
   .get("/", () => render(Home()))
+  .get(
+    "/.well-known/acme-challenge/***REMOVED***/",
+    () =>
+      "***REMOVED******REMOVED***",
+  )
   .get("/about", () => render(About()))
   .get("/projects", () => render(Projects()))
   .get("/socials", () => render(Socials()))
