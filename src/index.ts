@@ -71,7 +71,8 @@ const app = new Elysia()
       .all();
     return rows;
   })
-  .listen({ port: process.env.HTTP_PORT || 3000, tls: settings });
+  .listen({ port: 443, tls: settings })
+  .listen({ port: process.env.HTTP_PORT });
 
 console.log(
   `Elysia is running at ${app.server?.hostname}:${app.server?.port} on Bun ${Bun.version}. Startup took ${Bun.nanoseconds() / 1000000000} seconds`,
