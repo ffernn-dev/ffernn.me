@@ -4,6 +4,7 @@
   "scripts": {
     "start": "bun run src/index.ts",
     "dev": "bun run --watch src/index.ts",
+    "build": "bun run src/build.ts",
     "typecheck": "tsc",
     "format": "prettier --write 'src/**/*.{css,html,ts,tsx}'",
     "test": "bun test --watch --timeout 1000 --rerun-each 2 --coverage"
