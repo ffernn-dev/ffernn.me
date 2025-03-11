@@ -12,7 +12,7 @@ import getProjects from "./getProjects";
 import Socials from "./pages/Socials";
 import Blog from "./pages/Blog";
 import { logRequest } from "./analytics";
-import { rm } from "fs-extra";
+import Analytics from "./pages/Analytics";
 
 function render(element: JSXInternal.Element): string {
   return "<!DOCTYPE html>\n" + renderToString(element);
@@ -55,6 +55,7 @@ const app = new Elysia()
   .get("/projects", () => render(Projects()))
   .get("/socials", () => render(Socials()))
   .get("/blog", () => render(Blog()))
+  .get("/analytics", () => render(Analytics()))
   .get("/project/:id", ({ params: { id } }) => render(Project(id, db)))
   .get(
     "/api/projects",
