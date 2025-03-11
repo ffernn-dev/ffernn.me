@@ -27,7 +27,6 @@ export default function Layout(
   const embedImage = props.embedImage
     ? "http://ffernn.me" + props.embedImage
     : false;
-  console.log(embedImage);
   const pageTitle = title ? `${title} || ffernn` : "Fern!";
   return (
     <html lang="en">

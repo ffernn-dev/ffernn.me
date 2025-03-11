@@ -144,7 +144,6 @@ const loadPosts = async () => {
       cardImage = newCard.querySelector("img");
       cardImage.alt = post.banner_alt
       lazyLoadImage(cardImage, `/images/${post.banner_image}.png`);
-      console.log(cardImage, `/images/${post.banner_image}.png`)
     }
   });
 };

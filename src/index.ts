@@ -39,6 +39,9 @@ const app = new Elysia()
     }),
   )
   .use(html())
+  .onRequest(({ request }) => {
+    console.log(request);
+  })
   .get("/", () => render(Home()))
   .get(
     `/.well-known/acme-challenge/${process.env.CERTBOT_URL}}`,
