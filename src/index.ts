@@ -11,6 +11,8 @@ import Project from "./pages/Project";
 import getProjects from "./getProjects";
 import Socials from "./pages/Socials";
 import Blog from "./pages/Blog";
+import { logRequest } from "./analytics";
+import { rm } from "fs-extra";
 
 function render(element: JSXInternal.Element): string {
   return "<!DOCTYPE html>\n" + renderToString(element);
@@ -39,8 +41,10 @@ const app = new Elysia()
     }),
   )
   .use(html())
-  .onRequest(({ request }) => {
-    console.log(request);
+  .onRequest(({ request, path, server }) => {
+    const referer = request.headers.get("referer");
+    const ua = request.headers.get("user-agent");
+    logRequest(path, ua, referer, server?.requestIP(request)?.address);
   })
   .get("/", () => render(Home()))
   .get(
