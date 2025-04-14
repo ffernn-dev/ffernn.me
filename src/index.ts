@@ -21,17 +21,6 @@ function render(element: JSXInternal.Element): string {
 
 const db = new Database("db/content.sqlite", { create: true });
 
-const le_cert = Bun.file("/etc/letsencrypt/live/ffernn.me/fullchain.pem");
-const le_key = Bun.file("/etc/letsencrypt/live/ffernn.me/privkey.pem");
-const settings =
-  (await le_cert.exists()) && (await le_key.exists())
-    ? {
-        cert: le_cert,
-        key: le_key,
-        serverName: "ffernn.me",
-      }
-    : {};
-
 // Tracking
 const trackedPages = new Set([
   "/",
@@ -111,11 +100,18 @@ const app = new Elysia()
       .all();
     return rows;
   })
-  .get("/api/analytics", () => {
-    return getAnalyticsData();
-  })
-  .listen({ port: 443, tls: settings })
-  .listen({ port: process.env.HTTP_PORT });
+  .get(
+    "/api/analytics",
+    ({ params: { ignoreBots } }) => {
+      return getAnalyticsData(ignoreBots);
+    },
+    {
+      params: t.Object({
+        ignoreBots: t.Boolean(),
+      }),
+    },
+  )
+  .listen(3000);
 
 console.log(
   `Elysia is running at ${app.server?.hostname}:${app.server?.port} on Bun ${Bun.version}. Startup took ${Bun.nanoseconds() / 1000000000} seconds`,
