@@ -22,7 +22,7 @@ export function logRequest(
   path: string,
   userAgent: string | null,
   referer: string | null,
-  ip: string | undefined,
+  ip: string | null,
   sessionCookie: UUID,
 ) {
   // Look for existing User Agent in db
@@ -57,11 +57,6 @@ export function logRequest(
     uaID = uaRow.id;
   }
 
-  const parsedIP = ip
-    ? net.isIPv4(ip)
-      ? ip
-      : ip.replace(/^::ffff:/, "")
-    : null;
   // Strip the referer string
   var refererMatches =
     referer && referer.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
@@ -71,7 +66,7 @@ export function logRequest(
     `
   INSERT INTO requests (path, ip, user_agent_id, referer, session)
   VALUES (?, ?, ?, ?, ?)`,
-  ).run(path, parsedIP, uaID, referer || null, sessionCookie);
+  ).run(path, ip, uaID, referer || null, sessionCookie);
 }
 
 export function getAnalyticsData(excludeBots: boolean) {

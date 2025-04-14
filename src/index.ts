@@ -62,7 +62,7 @@ const app = new Elysia()
         path,
         ua,
         referer,
-        server?.requestIP(request)?.address,
+        request.headers.get("X-Real-IP"),
         sessionCookie,
       );
     }

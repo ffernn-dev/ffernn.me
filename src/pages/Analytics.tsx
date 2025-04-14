@@ -2,9 +2,9 @@ import Layout, { type PageProps } from "src/components/Layout";
 
 export default function Analytics() {
   const props: PageProps = {
-    title: "Project Portfolio",
-    url: "/projects",
-    description: "A searchable collection of projects I've worked on",
+    title: "Analytics",
+    url: "/analytics",
+    description: "Basic stats tracking for the various pages of this site.",
   };
 
   const page = (
