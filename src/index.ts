@@ -11,8 +11,9 @@ import Project from "./pages/Project";
 import getProjects from "./getProjects";
 import Socials from "./pages/Socials";
 import Blog from "./pages/Blog";
-import { logRequest } from "./analytics";
+import { getAnalyticsData, logRequest } from "./analytics";
 import Analytics from "./pages/Analytics";
+import type { UUID } from "crypto";
 
 function render(element: JSXInternal.Element): string {
   return "<!DOCTYPE html>\n" + renderToString(element);
@@ -31,6 +32,16 @@ const settings =
       }
     : {};
 
+// Tracking
+const trackedPages = new Set([
+  "/",
+  "/about",
+  "/projects",
+  "/socials",
+  "/blog",
+  "/analytics",
+]);
+
 const app = new Elysia()
   .use(
     staticPlugin({
@@ -41,10 +52,31 @@ const app = new Elysia()
     }),
   )
   .use(html())
-  .onRequest(({ request, path, server }) => {
-    const referer = request.headers.get("referer");
-    const ua = request.headers.get("user-agent");
-    logRequest(path, ua, referer, server?.requestIP(request)?.address);
+  .onAfterHandle(({ request, path, server, cookie: { session } }) => {
+    let sessionCookie: UUID;
+    if (!session.value) {
+      sessionCookie = crypto.randomUUID();
+      session.set({
+        value: sessionCookie,
+        //domain: "ffernn.me",
+        httpOnly: true,
+      });
+    } else {
+      sessionCookie = session.value as UUID;
+    }
+
+    if (trackedPages.has(path) || path.startsWith("/project/")) {
+      // const sessionCookie = session.value;
+      const referer = request.headers.get("referer");
+      const ua = request.headers.get("user-agent");
+      logRequest(
+        path,
+        ua,
+        referer,
+        server?.requestIP(request)?.address,
+        sessionCookie,
+      );
+    }
   })
   .get("/", () => render(Home()))
   .get(
@@ -78,6 +110,9 @@ const app = new Elysia()
       .prepare("SELECT * FROM tags ORDER BY tags.category DESC")
       .all();
     return rows;
+  })
+  .get("/api/analytics", () => {
+    return getAnalyticsData();
   })
   .listen({ port: 443, tls: settings })
   .listen({ port: process.env.HTTP_PORT });

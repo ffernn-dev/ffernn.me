@@ -18,8 +18,8 @@ const sidebarItems = [
 export default function Layout(
   props: PageProps,
   content: JSX.Element,
-  sidebarContent?: JSX.Element,
   stylesheets?: JSX.Element[],
+  sidebarContent?: JSX.Element,
 ) {
   const title = props.title ? props.title : false;
   const description = props.description ? props.description : "";

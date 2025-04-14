@@ -1,15 +1,34 @@
-import { getAnalyticsData } from "../analytics";
+import Layout, { type PageProps } from "src/components/Layout";
 
 export default function Analytics() {
-  const data = getAnalyticsData();
-  console.log(data);
-  return (
-    <div>
-      <h1>Analytics</h1>
-      <h2>{data.length} Visits</h2>
-      <div>
-        <canvas id="visits"></canvas>
+  const props: PageProps = {
+    title: "Project Portfolio",
+    url: "/projects",
+    description: "A searchable collection of projects I've worked on",
+  };
+
+  const page = (
+    <article>
+      <h1>A Very Barebones Analytics Page</h1>
+      <script src="/js/analytics.js" />
+      <div id="metrics-bar">
+        <div id="views-card" class="metric-card">
+          <div class="MetricCard_label">Views</div>
+          <div class="MetricCard_value" title="0">
+            0
+          </div>
+        </div>
+        <div id="visits-card" class="metric-card">
+          <div class="MetricCard_label">Unique Visits</div>
+          <div class="MetricCard_value" title="0">
+            0
+          </div>
+        </div>
       </div>
-    </div>
+    </article>
   );
+  const stylesheets = [
+    <link rel="stylesheet" type="text/css" href="/css/analytics.css" />,
+  ];
+  return Layout(props, page, stylesheets);
 }

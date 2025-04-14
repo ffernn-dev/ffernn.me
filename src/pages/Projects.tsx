@@ -39,5 +39,5 @@ export default function Projects() {
   const stylesheets = [
     <link rel="stylesheet" type="text/css" href="/css/posts.css" />,
   ];
-  return Layout(props, page, sidebarContent, stylesheets);
+  return Layout(props, page, stylesheets, sidebarContent);
 }
