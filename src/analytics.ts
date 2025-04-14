@@ -1,5 +1,5 @@
 import { Database } from "bun:sqlite";
-import useragent from "useragent";
+import Bowser from "bowser";
 import net from "net";
 import { isbot } from "isbot";
 import type { UUID } from "crypto";
@@ -32,7 +32,7 @@ export function logRequest(
 
   if (!uaRow) {
     // Parse the user agent
-    const parsedUA = userAgent ? useragent.parse(userAgent) : null;
+    const parsedUA = userAgent ? Bowser.parse(userAgent) : null;
 
     const result = db
       .prepare(
@@ -75,6 +75,7 @@ export function logRequest(
 }
 
 export function getAnalyticsData(excludeBots: boolean) {
+  console.log(excludeBots);
   const tableName = excludeBots ? "non_bot_requests" : "requests";
   const data = {
     views: db.query(`SELECT COUNT(*) AS n FROM ${tableName};`).get().n,

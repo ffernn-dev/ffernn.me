@@ -102,12 +102,12 @@ const app = new Elysia()
   })
   .get(
     "/api/analytics",
-    ({ params: { ignoreBots } }) => {
-      return getAnalyticsData(ignoreBots);
+    ({ query }) => {
+      return getAnalyticsData(query.ignoreBots || false);
     },
     {
-      params: t.Object({
-        ignoreBots: t.Boolean(),
+      query: t.Object({
+        ignoreBots: t.Optional(t.Boolean()),
       }),
     },
   )

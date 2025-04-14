@@ -23,6 +23,7 @@
     "@types/fs-extra": "^11.0.4",
     "@types/sharp": "^0.32.0",
     "@types/useragent": "^2.3.4",
+    "bowser": "^2.11.0",
     "elysia": "^1.2.24",
     "fs-extra": "^11.3.0",
     "gray-matter": "^4.0.3",
@@ -33,7 +34,6 @@
     "preact-render-to-string": "^6.5.13",
     "qs": "^6.14.0",
     "sharp": "^0.33.5",
-    "thumbhash": "^0.1.1",
-    "useragent": "^2.3.0"
+    "thumbhash": "^0.1.1"
   }
 }
