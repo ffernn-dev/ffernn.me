@@ -75,22 +75,21 @@ body {
   font-display: swap;
 }
 h1 {
-  font-size: 200%;
+  font-size: 2rem;
 }
 h2 {
-  font-size: 150%;
+  font-size: 1.5rem;
 }
 h3 {
-  font-size: 130%;
+  font-size: 1.3rem;
   margin: 0;
 }
-p,
-li {
-  line-height: 150%;
-  font-size: 110%;
+li.sidebar-page {
+  line-height: 1.5rem;
+  font-size: 1.1rem;
 }
 ul {
-  font-size: 1em;
+  font-size: 1rem;
 }
 a {
   position: relative;
@@ -128,7 +127,6 @@ ul {
 li {
   margin-bottom: 0.2rem;
   border-radius: 6px;
-  list-style-position: inside;
 }
 li > ul {
   padding-left: 2rem;
@@ -142,6 +140,7 @@ li > ul {
 }
 .sidebar-page {
   padding: 0.33rem 0.5rem;
+  list-style-position: inside;
 }
 hr {
   border: none;
@@ -179,8 +178,8 @@ input:focus {
 }
 
 .taglist {
-  font-size: 90%;
-  line-height: 200%;
+  font-size: 0.9rem;
+  line-height: 2rem;
   /* background-color: #426b69;
   padding: 0.25rem;
   border-radius: 0.6rem; */
@@ -239,6 +238,9 @@ input:focus {
   padding: var(--sidebar-padding);
   overflow: auto;
   overscroll-behavior-y: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .content-container {
@@ -274,7 +276,7 @@ input:focus {
 }
 
 #bucket-webring span a {
-  font-size: 110%;
+  font-size: 1.1rem;
 }
 
 #backbutton {
@@ -301,7 +303,7 @@ input:focus {
 .image-attribution {
   transition: opacity 0.1s ease-in-out;
   opacity: 0;
-  font-size: 90%;
+  font-size: 0.9rem;
   background-color: #221f23;
   border-radius: 0 0.25rem 0 0;
   padding: 0.25rem;
@@ -415,6 +417,10 @@ input:focus {
     box-shadow: 0 12px 9px 5px rgba(28, 26, 30, 1);
     width: var(--content-width);
     height: auto;
+    display: block;
+  }
+  #widgets {
+    display: none;
   }
   .sidebar li {
     display: inline;

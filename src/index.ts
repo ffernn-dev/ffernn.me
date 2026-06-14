@@ -69,7 +69,7 @@ const app = new Elysia()
   })
   .get("/", () => render(Home()))
   .get(
-    `/.well-known/acme-challenge/${process.env.CERTBOT_URL}}`,
+    `/.well-known/acme-challenge/${process.env.CERTBOT_URL}`,
     () => process.env.CERTBOT_STRING,
   )
   .get("/about", () => render(About()))

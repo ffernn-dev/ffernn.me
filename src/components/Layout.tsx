@@ -75,28 +75,37 @@ export default function Layout(
         />
         <link rel="apple-touch-icon" href="/icons/icon128_maskable.png" />{" "}
         <link rel="alternate" hreflang="en" href="http://ffernn.me/" />
+        <script type="module" src="/js/time_widget.js"></script>
       </head>
       <body style="background-color: #1c1a1e">
         <div id="main">
           <div class="sidebar box">
-            <h2>fern!</h2>
-            <ul>
-              {sidebarItems.map((item) => (
-                <li
-                  key={item.href}
-                  className={
-                    url.endsWith(item.href)
-                      ? "active sidebar-page"
-                      : "sidebar-page"
-                  }
-                >
-                  <a className="link" href={item.href}>
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-              {sidebarContent || null}
-            </ul>
+            <nav>
+              <h2>fern!</h2>
+              <ul>
+                {sidebarItems.map((item) => (
+                  <li
+                    key={item.href}
+                    className={
+                      url.endsWith(item.href)
+                        ? "active sidebar-page"
+                        : "sidebar-page"
+                    }
+                  >
+                    <a className="link" href={item.href}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+                {sidebarContent || null}
+              </ul>
+            </nav>
+            <div id="widgets">
+              <hr></hr>
+              <noscript>
+                <p>My time zone is Australia/Sydney: AEST and AEDT</p>
+              </noscript>
+            </div>
           </div>
           <div class="content-container">
             <div class="content box">{content}</div>
